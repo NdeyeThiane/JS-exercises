@@ -96,8 +96,15 @@ function pluck(arrOfObj, key){
     let arr = [];
     for(let i =0; i<arrOfObj.length; i++){
         let obj = arrOfObj[i];
-        for(let prop in )
-    }
+        if(Object.hasOwn(obj, key)) {
+            arr.push(obj[key])
+        }
+        else{
+            arr.push(undefined);
+        }
+        
+        }
+    
     
     return arr;
 }
