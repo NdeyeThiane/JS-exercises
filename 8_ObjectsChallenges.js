@@ -19,6 +19,19 @@
 // let obj3 = {};
 // keys(obj3); // []
 
+function keys(obj){
+    let arrOfKeys = [];
+    for(let prop in obj){
+        arrOfKeys.push(prop);
+
+    }
+    return arrOfKeys;
+}
+
+console.log(keys({ a: 1, b: 2, c: 3 }));
+console.log(keys({ first: 'Matt', last: 'Lane' }));
+console.log(keys({}));
+
 // Exercise 2. Write a function called values, which accepts an object and returns an array of all of the values in the object.
 // IMPORTANT: Do not use the built in Object.values() function!
 // Examples:
@@ -28,6 +41,19 @@
 // values(obj2); // ["Matt", "Lane", true]
 // let obj3 = {};
 // values(obj3); // []
+
+function values(obj){
+    let arrOfValues = [];
+    for(let prop in obj){
+        arrOfValues.push(obj[prop]);
+    }
+
+    return arrOfValues;
+}
+
+console.log(values({ a: 1, b: 2, c: 3 }));
+console.log(values({ first: 'Matt', last: 'Lane', isDogOwner: true }));
+console.log(values({}));
 
 // Exercise 3. Write a function called entries, which accepts an object and returns an array of arrays of key-value pairs.
 // In other words, each sub-array is an "entry" in the object with two elements: the first element is the key, and the second element is the value.
@@ -42,6 +68,21 @@
 // let obj3 = {};
 // entries(obj3); // []
 
+function entries(obj){
+    let arrOfEntries = [];
+    for( let prop in obj){
+        arrOfEntries.push([prop, obj[prop]]);
+    }
+
+    return arrOfEntries;
+
+}
+
+console.log(entries({ a: 1, b: 2, c: 3 }));
+console.log(entries({ first: 'Matt', last: 'Lane', isDogOwner: true }));
+console.log(entries({}));
+
+
 // Exercise 4. Write a function called pluck, which takes an array of objects and the name of a key.
 // The function should return an array containing the value associated with that key for each object, or undefined if that key is not present in the object.
 // Examples:
@@ -49,6 +90,19 @@
 // ["Tim", "Matt", "Elie"]
 // pluck([{ name: "Tim", isBoatOwner: true }, { name: "Matt", isBoatOwner: false }, { name: "Elie" }],'isBoatOwner')
 // [true, false, undefined]
+
+function pluck(arrOfObj, key){
+
+    let arr = [];
+    for(let i =0; i<arrOfObj.length; i++){
+        let obj = arrOfObj[i];
+        for(let prop in )
+    }
+    
+    return arr;
+}
+console.log(pluck([{ name: "Tim" }, { name: "Matt" }, { name: "Elie" }],'name'));
+console.log(pluck([{ name: "Tim", isBoatOwner: true }, { name: "Matt", isBoatOwner: false }, { name: "Elie" }],'isBoatOwner'));
 
 // Exercise 5. Write a function called stringFromObject that generates a string from an object's key/value pairs.
 // The format should be "key = value, key = value".
@@ -60,6 +114,17 @@
 // "name = Elie, job = Instructor, isCatOwner = false"
 // stringFromObject({}); // ""
 
+function stringFromObject(obj){
+    let string = "";
+    for(let prop in obj){
+        string = `${string}, ${prop} = ${obj[prop]}`;
+    }
+    return string.substring(1, string.length);
+
+}
+
+console.log(stringFromObject({ name: 'Elie', job: 'Instructor', isCatOwner: false }));
+
 // Exercise 6. Write a function called minMaxKeyInObject that accepts an object with numeric keys.*
 // The function should return an array with the following format: [lowestKey, highestKey]
 // Examples:
@@ -67,3 +132,15 @@
 // [1, 10]
 // minMaxKeyInObject({ 1: 'Elie', 4: 'Matt', 2: 'Tim' });
 // [1, 4]
+
+function minMaxKeyInObject(obj){
+    let arr= [];
+    for(let prop in obj){
+        arr.push(parseInt(prop));
+    }
+
+    arr.sort((a,b) => {return a-b;});
+    return [arr[0], arr[arr.length-1]];
+}
+
+console.log(minMaxKeyInObject({ 2: 'a', 7: 'b', 1: 'c', 10: 'd', 4: 'e' }));
